@@ -9,6 +9,12 @@ Enabled local audit policies to collect authentication and process creation even
 - Audit account logon events → Success & Failure
 - Audit account management → Success & Failure
 
+Enabled Audit Process Creation
+- Enabling Includes command line in process creation events
+
+Update Policy
+- CMD ran gpupdate /force
+
 Key events collected:
 - Event ID :4624 Failed logon attempts
 - Event ID 4624: Successful logons attempts
