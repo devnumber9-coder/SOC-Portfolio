@@ -2,20 +2,33 @@
 
 ## Incident Overview
 
-_Document the brute force attack incident details here._
+Multiple failed authentication attempts were detected against a Windows 11 endpoint, indicating potential brute-force activity.
 
+Detection:
+- Source: Windows Security Event Log
+- Indicator: Event ID 4625 (failed logon) Local account
+- Pattern: Repeated failures within a short time window
+- 
 ## Timeline
 
-_Add the timeline of the incident._
+- System Event log Securtly logged Event ID 4625 (failed Logon) attempts from local machine
+- Ststem Event log Event ID 4625  (failed Logon) 5 or more failed event triggered ststem timeout
+
+
 
 ## Detection
 
-_Explain how the attack was detected._
 
 ## Response and Containment
 
-_Document your response actions._
+Impact:
+- No successful compromise observed
+- Account remained accessible only after valid credentials were used
+
 
 ## Lessons Learned
 
-_Add key takeaways and improvements._
+Recommended Remediation:
+- Configure account lockout thresholds
+- Implement alerting for repeated authentication failures wihtou succesful logins
+- Review source of authentication attempts
