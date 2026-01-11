@@ -1,9 +1,11 @@
 # Detection and Alerts
 
-## Detection Rules
+## SIEM Log Ingestion (Splunk)
 
-_Document your custom detection rules and queries._
+Windows 11 Security Event Logs were successfully forwarded to Splunk SIEM using the Splunk Universal Forwarder.
 
-## Alert Configuration
+Validated ingestion:
+- Security Event Log are indexed in Splunk for searches
+- Failed logon events (Event ID 4625) searchable via Splunk queries
 
-_Add details about alert thresholds, notifications, and response workflows._
+This will enable centralized monitoring and investigation of authentication activity.
