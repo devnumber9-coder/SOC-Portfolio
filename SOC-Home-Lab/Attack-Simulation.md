@@ -1,20 +1,16 @@
-# Attack Simulation
+## Attack Simulation
 
-## Tools and Techniques
+Initial validation of host connectivity was performed using Kali Linux.
 
-## Brute-Force Authentication Simulation
+Actions performed:
+- ICMP ping to Windows host
+- Nmap scan to validate host reachability
+- Manual failed authentication attempts on Windows
 
-A controlled authentication attack was simulated against a Windows 11 by generating repeated failed login attempts.
+The purpose of this phase was to generate authentication failure telemetry, not exploit services.
 
-Details:
-- Attack type: Brute-force Attempts
-- Target system: Local windows 11 account
-- Evidence: Multiple Event ID 4625 entries in the Windows Security log
-- Outcome: Failed authentication attempts detected with no account compromise
+Screenshots:
+- Kali ping output
+- Nmap scan results
 
-
-## Document the attack simulation tools used
-
-## Attack Scenarios
-
-_Add details about the attack scenarios you simulated and tested._
+This is not a hacking lab — keep it professional.
