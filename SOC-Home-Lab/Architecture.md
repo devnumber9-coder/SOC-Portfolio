@@ -1,17 +1,12 @@
-
 ## Lab Architecture
 
-- Windows 11 VM configured as a monitoring endpoint 
-- Local security auditing enabled for logging
-- Logs generated locally prior to SIEM ingestion correctly
-- Network configured using NAT for isolation
+The environment consists of:
+- A Windows 11 host generating authentication logs
+- A Kali Linux VM used for initial network validation
+- Splunk Enterprise ingesting Windows Security logs
 
+Logs flow from the Windows endpoint into Splunk, where searches and scheduled detections are evaluated.
 
-## Lab Topology
+See screenshots in `/Screenshots/architecture/`.
 
-_Add your network diagram and lab architecture details here._
-
-## Components
-
-- Splunk Enterprise configured as the central SIEM receiving endpoint logs
-
+Include 1 diagram or IP screenshot, not many.
