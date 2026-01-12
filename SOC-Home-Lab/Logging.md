@@ -1,25 +1,15 @@
-# Logging
+## Logging and Telemetry
 
-## Windows 11 Security Logging
+Windows Security logging was enabled and validated using Event Viewer.
 
-These events support detection of brute-force attacks, unauthorized access attempts, and suspicious process activity.
+Relevant Event IDs observed:
+- 4625 – Failed logon
+- 4776 – Credential validation failure
 
-Enabled local audit policies to collect authentication and process creation events logging.
-- Audit logon events → Success & Failure 
-- Audit account logon events → Success & Failure
-- Audit account management → Success & Failure
+Events were confirmed locally and then verified in Splunk after ingestion.
 
-Enabled Audit Process Creation
-- Enabling Includes command line in process creation events
+Screenshots:
+- Event Viewer showing Event ID 4625
+- Event Viewer showing Event ID 4776
 
-Update Policy
-- CMD ran gpupdate /force
-
-Key events collected:
-- Event ID :4624 Failed logon attempts
-- Event ID 4624: Successful logons attempts
-- Event ID 4688: Process creation with command-line arguments
-
-## SIEM Configuration
-
-_Add details about your SIEM setup and log aggregation._
+This is where your Event Viewer screenshots shine.
