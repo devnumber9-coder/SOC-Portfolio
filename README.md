@@ -1,14 +1,11 @@
-# 🛡️ Security Operations & IT Security Portfolio
-## 👋 About Me
+# Security Operations & IT Security Portfolio
+## About Me
 
 Entry-level IT Security professional building hands-on experience in security monitoring, log analysis, and detection engineering through structured labs aligned with CompTIA Security+ and SOC fundamentals.
 
 This portfolio documents real labs I have completed, how I configured them, what I observed, and what I learned — with screenshots and written analysis for each project.
 
----
-
-## 🎯 Core Skills (Hands-On)
-
+##  Core Skills (Hands-On)
 ### Security Operations Foundations
 
 - Log collection and normalization
@@ -25,10 +22,7 @@ This portfolio documents real labs I have completed, how I configured them, what
 - Windows & Linux log analysis
 - MITRE ATT&CK technique mapping (intro level)
 
----
-
-## 🧰 Tools I Have Actually Used
-
+## Tools I Have Actually Used
 ### SIEM & Logging
 - Splunk Enterprise (Home Lab)
 - Windows Event Logs
@@ -47,7 +41,7 @@ This portfolio documents real labs I have completed, how I configured them, what
 
 ---
 
-## 📜 Certifications
+## Certifications
 
 - **CompTIA Security+** — In Progress
 - **Google Cybersecurity Professional Certificate** — Completed
@@ -56,11 +50,11 @@ This portfolio documents real labs I have completed, how I configured them, what
 
 ---
 
-## 🔬 Completed & Active Labs
+##  Completed & Active Labs
 
-### 1️⃣ Splunk SIEM Detection Lab (Completed)
+### Splunk SIEM Detection Lab (Completed)
 **Focus:** Log ingestion, detection logic, and validation  
-**Status:** ✅ Completed
+**Status:**  Completed
 
 #### What I Did
 - Installed and configured Splunk Enterprise
@@ -76,7 +70,7 @@ This portfolio documents real labs I have completed, how I configured them, what
 - Not all malicious activity generates alerts by default
 - Detection engineering ≠ instant alerts
 
-**📁 Documentation included:**
+** Documentation included:**
 - Setup steps
 - Searches used
 - Screenshots of events
@@ -84,10 +78,10 @@ This portfolio documents real labs I have completed, how I configured them, what
 
 ---
 
-### 2️⃣ Network Activity & Port Monitoring Lab (Completed)
+### Network Activity & Port Monitoring Lab (Completed)
 
 **Focus:** Network behavior analysis  
-**Status:** ✅ Completed
+**Status:**  Completed
 
 #### What I Did
 - Monitored live connections using `netstat -ano`
@@ -101,21 +95,9 @@ This portfolio documents real labs I have completed, how I configured them, what
 - Logging ≠ detection
 - Visibility depends on data sources
 
----
+### SOC Workflow Fundamentals Lab (Active)  
 
-### 3️⃣ SOC Workflow Fundamentals Lab (Active)
-**Focus:** SOC thinking & documentation  
-**Status:** 🔄 In Progress
-
-**What I'm Doing**
-- Documenting detections like a SOC analyst
-- Writing investigation notes
-- Mapping events to MITRE ATT&CK techniques
-- Practicing "Is this normal or suspicious?" analysis
-
----
-
-## 🧪 Lab Environment
+##  Lab Environment
 
 - **Virtualization:** VirtualBox / VMware
 - **SIEM:** Splunk Enterprise
@@ -123,9 +105,7 @@ This portfolio documents real labs I have completed, how I configured them, what
 - **Attack Simulation:** Controlled local testing only
 - **Networking:** Host-only & NAT lab networks
 
----
-
-## 📝 Documentation Standards
+## Documentation Standards
 
 Every lab includes:
 - Objective
@@ -135,20 +115,15 @@ Every lab includes:
 - Screenshots (evidence)
 - Analysis & conclusions
 - What I would improve next time
-
----
-
-## 🎓 Current Learning Focus
-
-- CompTIA Security+ (Domains 1–5)
+  
+##  Current Learning Focus
+- CompTIA Security+ 
 - SOC alert logic vs dashboards
 - Windows logging & Sysmon basics
 - Entry-level incident response workflows
 - Preparing for SOC / IT Security interviews
 
----
-
-## 📫 Connect With Me
+##  Connect With Me
 
 **GitHub:** https://github.com/devnumber9-coder
 
