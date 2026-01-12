@@ -1,12 +1,23 @@
-# SOC Home Lab
+# SOC Home Lab – Brute Force Authentication Detection
 
-## Overview
-Documentation for SOC home lab setup, logging, detection, and incident response.
+This project demonstrates the design, implementation, and validation of a basic SOC detection pipeline using Windows endpoint logs and Splunk Enterprise.
 
-## Contents
-- [Architecture](Architecture.md) - Lab topology and design
-- [Logging](Logging.md) - Log collection and management
-- [Attack Simulation](Attack-Simulation.md) - Attack scenarios and testing
-- [Detection and Alerts](Detection-and-Alerts.md) - Detection rules and alerting
-- [Incident Reports](Incident-Reports/) - Incident response documentation
-- [Screenshots](Screenshots/) - Visual evidence and diagrams
+The lab focuses on detecting brute-force authentication attempts through Windows Security Event Logs and validating detection logic using SIEM searches, scheduled jobs, and analysis of endpoint behavior.
+
+## Objectives
+- Simulate suspicious authentication behavior
+- Collect and ingest endpoint security logs
+- Build and validate detection logic in Splunk
+- Analyze alert behavior and detection limitations
+- Document findings using SOC-style methodology
+
+## Tools Used
+- Windows 11 (Endpoint)
+- Kali Linux (Attack simulation)
+- Splunk Enterprise (SIEM)
+- Windows Event Viewer
+
+## Key Takeaways
+- Endpoint lockout behavior can affect alert triggering
+- Detection validation does not always rely on alert firing
+- Dashboard-based analysis is often more reliable for authentication signals
