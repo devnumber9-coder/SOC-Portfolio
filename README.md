@@ -1,105 +1,194 @@
-# 🛡️ Security Operations Center (SOC) Portfolio
+🛡️ Security Operations & IT Security Portfolio
+👋 About Me
 
-## 👋 About Me
-Security professional with a passion for threat detection, incident response, and proactive security monitoring. This portfolio showcases my hands-on experience in cybersecurity operations, threat hunting, and security analysis.
+Entry-level IT Security professional building hands-on experience in security monitoring, log analysis, and detection engineering through structured labs aligned with CompTIA Security+ and SOC fundamentals.
 
-## 🎯 Core Competencies
+This portfolio documents real labs I have completed, how I configured them, what I observed, and what I learned — with screenshots and written analysis for each project.
 
-### Security Operations
-- Security Information and Event Management (SIEM)
-- Threat Detection and Analysis
-- Incident Response and Handling
-- Security Monitoring and Alerting
-- Log Analysis and Correlation
+🎯 Core Skills (Hands-On)
+Security Operations Foundations
 
-### Threat Intelligence
-- Threat Hunting and Investigation
-- Malware Analysis
-- Indicator of Compromise (IOC) Detection
-- Threat Actor Profiling
-- Vulnerability Assessment
+Log collection and normalization
 
-### Tools & Technologies
-- **SIEM Platforms:** Splunk, ELK Stack, QRadar, Sentinel
-- **Network Analysis:** Wireshark, Zeek, Snort, Suricata
-- **Threat Intelligence:** MISP, OpenCTI, ThreatConnect
-- **Incident Response:** TheHive, Cortex, Autopsy
-- **Security Frameworks:** MITRE ATT&CK, Cyber Kill Chain, NIST
+Security event monitoring
 
-## 📜 Certifications
-- [ ] CompTIA Security+ (In Progress)
-- [ ] Certified SOC Analyst (CSA)
-- [ ] GIAC Security Essentials (GSEC)
-- [ ] Blue Team Level 1 (BTL1)
+Detection rule creation
 
-## 🔬 Projects
+Basic incident analysis
 
-### 1. SIEM Implementation & Log Analysis
-**Status:** Planning Phase  
-**Description:** Building a home lab SIEM environment for real-time security event monitoring and analysis.
-- Setting up centralized logging infrastructure
-- Creating custom detection rules and alerts
-- Developing incident response playbooks
-- Analyzing security events and generating reports
+Alert vs dashboard-based detection
 
-### 2. Threat Hunting Lab
-**Status:** Upcoming  
-**Description:** Proactive threat hunting exercises using real-world attack scenarios.
-- Implementing threat hunting methodologies
-- Analyzing endpoint and network data
-- Identifying advanced persistent threats (APTs)
-- Documenting findings and remediation steps
+Blue Team Fundamentals
 
-### 3. Incident Response Simulation
-**Status:** Planned  
-**Description:** Hands-on incident response scenarios covering the full IR lifecycle.
-- Malware outbreak containment
-- Ransomware attack response
-- Data breach investigation
-- Post-incident analysis and reporting
+Threat detection concepts
 
-### 4. Network Traffic Analysis
-**Status:** Planned  
-**Description:** Deep packet inspection and network behavior analysis project.
-- Capturing and analyzing network traffic
-- Identifying malicious communications
-- Detecting command and control (C2) traffic
-- Creating network security baselines
+IOC recognition (IPs, ports, processes)
 
-### 5. Security Automation & Orchestration
-**Status:** Future  
-**Description:** Automating SOC workflows and response actions.
-- Building SOAR playbooks
-- Automating alert triage
-- Integrating security tools via APIs
-- Developing custom security scripts
+Network traffic awareness
 
-## 📊 Lab Environment
-- Virtualization: VirtualBox / VMware
-- Operating Systems: Windows Server, Linux (Ubuntu, Kali, Security Onion)
-- Network Simulation: GNS3, Packet Tracer
-- Attack Simulation: Metasploit, Caldera, Atomic Red Team
+Windows & Linux log analysis
 
-## 📚 Documentation
-Each project includes detailed documentation covering:
-- Objectives and scope
-- Lab setup and configuration
-- Step-by-step procedures
-- Screenshots and evidence
-- Analysis and findings
-- Lessons learned
+MITRE ATT&CK technique mapping (intro level)
 
-## 🎓 Continuous Learning
-Currently studying:
-- Advanced threat hunting techniques
-- Cloud security monitoring (AWS, Azure)
-- SOAR implementation and automation
-- Digital forensics and incident response (DFIR)
+🧰 Tools I Have Actually Used
+SIEM & Logging
 
-## 📫 Connect With Me
-- GitHub: [@devnumber9-coder](https://github.com/devnumber9-coder)
-- Portfolio: [IT Portfolio](https://github.com/devnumber9-coder/IT-Portfolio)
+Splunk Enterprise (Home Lab)
 
----
+Windows Event Logs
 
-*This portfolio is continuously updated as I complete new projects and expand my security operations knowledge.*
+Sysmon (basic configuration)
+
+Network connection logs (netstat, firewall data)
+
+Operating Systems & Platforms
+
+Windows 10 / Windows Server (lab)
+
+Linux (Ubuntu, Kali – basic usage)
+
+VirtualBox / VMware
+
+Networking & Analysis
+
+TCP/UDP traffic inspection
+
+Port and process correlation
+
+Local attack simulation (controlled lab activity)
+
+📜 Certifications
+
+CompTIA Security+ — In Progress
+
+Google Cybersecurity Professional Certificate — Completed
+
+(Future certifications will be added only after completion)
+
+🔬 Completed & Active Labs
+1️⃣ Splunk SIEM Detection Lab (Completed)
+
+Focus: Log ingestion, detection logic, and validation
+Status: ✅ Completed
+
+What I Did
+
+Installed and configured Splunk Enterprise
+
+Ingested Windows logs into Splunk
+
+Simulated suspicious network activity
+
+Created searches to identify abnormal behavior
+
+Learned why alerts did not trigger automatically
+
+Validated detections using dashboards instead of alerts
+
+Key Lessons
+
+Alerts require strict conditions and thresholds
+
+Dashboards are better for lab-based validation
+
+Not all malicious activity generates alerts by default
+
+Detection engineering ≠ instant alerts
+
+📁 Documentation included:
+
+Setup steps
+
+Searches used
+
+Screenshots of events
+
+Explanation of why alerts did/did not fire
+
+2️⃣ Network Activity & Port Monitoring Lab (Completed)
+
+Focus: Network behavior analysis
+Status: ✅ Completed
+
+What I Did
+
+Monitored live connections using netstat -ano
+
+Correlated open ports with running processes
+
+Generated controlled suspicious connections
+
+Verified activity appeared in Splunk logs
+
+Learned differences between TCP vs UDP visibility
+
+Key Lessons
+
+Some traffic does not generate alerts
+
+Logging ≠ detection
+
+Visibility depends on data sources
+
+3️⃣ SOC Workflow Fundamentals Lab (Active)
+
+Focus: SOC thinking & documentation
+Status: 🔄 In Progress
+
+What I’m Doing
+
+Documenting detections like a SOC analyst
+
+Writing investigation notes
+
+Mapping events to MITRE ATT&CK techniques
+
+Practicing “Is this normal or suspicious?” analysis
+
+🧪 Lab Environment
+
+Virtualization: VirtualBox / VMware
+
+SIEM: Splunk Enterprise
+
+Operating Systems: Windows, Linux
+
+Attack Simulation: Controlled local testing only
+
+Networking: Host-only & NAT lab networks
+
+📝 Documentation Standards
+
+Every lab includes:
+
+Objective
+
+Environment setup
+
+Data sources used
+
+Detection logic
+
+Screenshots (evidence)
+
+Analysis & conclusions
+
+What I would improve next time
+
+🎓 Current Learning Focus
+
+CompTIA Security+ (Domains 1–5)
+
+SOC alert logic vs dashboards
+
+Windows logging & Sysmon basics
+
+Entry-level incident response workflows
+
+Preparing for SOC / IT Security interviews
+
+📫 Connect With Me
+
+GitHub: https://github.com/devnumber9-coder
+
+Portfolio Repo: https://github.com/devnumber9-coder/IT-Portfolio
