@@ -12,5 +12,3 @@ The purpose of this phase was to generate authentication failure telemetry, not 
 Screenshots:
 - Kali ping output
 - Nmap scan results
-
-This is not a hacking lab — keep it professional.
