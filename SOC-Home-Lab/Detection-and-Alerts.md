@@ -17,5 +17,3 @@ The scheduled search executed successfully and returned matching events. However
 This behavior was confirmed via:
 - Splunk search results
 - Job Management execution logs
-
-Detection logic was validated without relying on alert firing, reflecting real-world SOC practices.
