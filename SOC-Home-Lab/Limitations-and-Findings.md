@@ -1,13 +1,9 @@
-# Limitations and Findings
+## Limitations and Findings
 
-## Lab Limitations
+During testing, Windows account lockout controls limited the number of consecutive failed authentication attempts within a single time window.
 
-_Document the limitations of your home lab setup._
+As a result:
+- Failed attempts were split across time buckets
+- Alert thresholds were not met in a single scheduled run
 
-## Key Findings
-
-_Add your key observations and discoveries from the lab._
-
-## Lessons Learned
-
-_Document what you learned during this project._
+This behavior reflects real-world endpoint protections and highlights why SOC teams often rely on dashboards and trend analysis rather than strict alert thresholds for authentication-based detections.
