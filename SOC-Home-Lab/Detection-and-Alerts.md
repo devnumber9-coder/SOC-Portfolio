@@ -1,11 +1,21 @@
-# Detection and Alerts
+## Detection Logic
 
-## SIEM Log Ingestion (Splunk)
+A scheduled Splunk detection was created to identify potential brute-force authentication attempts.
 
-Windows 11 Security Event Logs were successfully forwarded to Splunk SIEM using the Splunk Universal Forwarder.
+### SPL Used
+```spl
+source="WinEventLog:Security" EventCode=4625
+| bin _time span=5m
+| stats count as failures by user, _time
+| where failures >= 5
+```
 
-Validated ingestion:
-- Security Event Log are indexed in Splunk for searches
-- Failed logon events (Event ID 4625) searchable via Splunk queries
+### Alert Behavior
 
-This will enable centralized monitoring and investigation of authentication activity.
+The scheduled search executed successfully and returned matching events. However, no alert trigger occurred due to Windows account lockout behavior distributing failed attempts across multiple time buckets.
+
+This behavior was confirmed via:
+- Splunk search results
+- Job Management execution logs
+
+Detection logic was validated without relying on alert firing, reflecting real-world SOC practices.
