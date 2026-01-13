@@ -19,7 +19,7 @@ Detect and analyze brute force authentication attempts on Windows systems using 
 
 ### Architecture
 ```
-Kali Linux (Attacker) --> Windows 10 (Target with Forwarder) --> Splunk Enterprise (SIEM)
+Kali Linux (Attacker) --> Windows 11 (Target with Forwarder) --> Splunk Enterprise (SIEM)
 ```
 
 ### Configuration Steps
@@ -102,6 +102,16 @@ index=windows EventCode=4625
 - Targeted "administrator" and common usernames
 - Clear pattern of automated brute force behavior
 
+## Key Windows Security Event IDs
+
+| Event ID | Meaning |
+|----------|---------|
+| 4625 | Failed logon attempt |
+| 4624 | Successful logon |
+| 4776 | Credential validation failure |
+
+These events were used as the data sources for detection and visualization in this lab.
+
 ## Detection Improvements
 
 ### Alert Rule
@@ -148,6 +158,10 @@ See `screenshots/SOC-Home/` for visual evidence:
 - Microsoft Event ID 4625 Documentation
 - Splunk SPL Documentation
 - MITRE ATT&CK T1110 (Brute Force)
+- 
+## Conclusion
+
+This lab demonstrated how to collect Windows authentication logs, simulate failed logon activity, and visualize patterns using dashboards in Splunk. While alerting thresholds may vary in production environments, the dashboard provides meaningful analyst visibility into authentication trends that could indicate brute force or related suspicious behavior.
 
 ---
 
