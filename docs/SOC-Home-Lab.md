@@ -147,10 +147,9 @@ See `screenshots/SOC-Home/` for visual evidence:
 5. **Threshold Tuning**: Balance between false positives and true attack detection
 
 ## Tools Used
-- Splunk Enterprise 9.x
+- Splunk Enterprise 10
 - Splunk Universal Forwarder
 - Kali Linux
-- Hydra
 - Windows Event Viewer
 - Nmap
 
