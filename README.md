@@ -5,11 +5,12 @@ This repository contains hands-on Security Operations Lab work designed to demon
 ## Completed Labs
 
 - [Windows Authentication Brute Force Detection (SOC-Home-Lab)](docs/SOC-Home-Lab.md)
+- [Password Spraying Detection](docs/Password-Spray-Lab.md)
 
 ## In Progress / Future Labs
 
 - [Network Activity Log Analysis](docs/Network-Activity-Lab.md)
-- [Password Spraying Detection](docs/Password-Spray-Lab.md)
+
 
 ## Skills Summary
 
