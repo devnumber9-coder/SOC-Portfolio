@@ -62,7 +62,7 @@ Goal: Create many failed logon events for one (or more) accounts to simulate bru
 ## Step 2 — Baseline Splunk Search (4625 Volume by User)
 - Goal: Prove Splunk sees the failed logons and identify which account is getting hit the most.
 
-## A) Quick count by account field (what you first tried)
+## A) Quick count by account field
 ```spl
 source="WinEventLog:Security" EventCode=4625
 | stats count by Account_Name
@@ -82,7 +82,6 @@ source="WinEventLog:Security" EventCode=4625
 ```
 
 **Screenshot(s) to capture**
-- Results showing a high count for an account you attacked (example: `alice`) and the `-` bucket visible above it.
 
 ---
 
@@ -100,16 +99,11 @@ source="WinEventLog:Security" EventCode=4625
 **How to interpret**
 - Look for  high failures clustered in the same minute for the same user.
 
-**Screenshot(s) to capture**
-- Table showing `_time`, `user`, and `failures` with your attacked user near the top.
-
----
-
 ## Step 4 — Create the Alert (Brute Force Authentication Detection)
 - Goal: Turn the detection search into a scheduled alert.
 
 ### Recommended alert search (add a threshold)
-Pick a threshold that matches your lab volume. Example: trigger when a user has **10+ failures in 1 minute**.
+Pick a threshold that matches lab volume. Example: trigger when a user has **10+ failures in 1 minute**.
 
 ```spl
 source="WinEventLog:Security" EventCode=4625
@@ -121,7 +115,7 @@ source="WinEventLog:Security" EventCode=4625
 ```
 
 ### Scheduling
-If you want it to run every 5 minutes (cron):
+If wanted it to run every 5 minutes (cron):
 - Cron schedule: `*/5 * * * *`
 
 > In Splunk: Save As → Alert → Schedule → Cron Schedule and paste the expression above.
@@ -131,26 +125,19 @@ If you want it to run every 5 minutes (cron):
 - Type:Scheduled  
 - Severity: Critical  
 - Trigger: “If results > 0”  
-- Time range: last 5 minutes (or last 15 minutes if you want more coverage)
+- Time range: last 5 minutes (or last 15 minutes for more coverage)
 
-**Screenshot(s) to capture**
-- Triggered Alerts page showing Brute Force Authentication Detection fired successfully.
-
----
 
 ## Results / Evidence
-You validated:
+Validated:
 - Windows generated 4625 failures during the attack simulation.
-- Splunk ingested those events (`WinEventLog:Security`) and you could:
+- Splunk ingested those events (`WinEventLog:Security`) and could:
   - Count failures by user
   - Normalize username fields with `coalesce()`
   - Detect bursts using `bin _time span=1m`
 - A scheduled alert triggered in Splunk.
 
 ---
-
-## Screenshots to Keep (Recommended Set)
-Save these under something like: `screenshots/brute-force/`
 
 1. Splunk ingestion baseline (Security events showing up)
 2. Event Viewer 4625 showing attacked user + source workstation/address (if present)
@@ -160,7 +147,7 @@ Save these under something like: `screenshots/brute-force/`
 
 ---
 
-## Notes / Troubleshooting (What you hit in this lab)
+## Notes / Troubleshooting 
 - `TargetUserName` sometimes blank: use `coalesce(TargetUserName, Account_Name)` to normalize.
 - `-` user bucket: represents missing/NULL username in those events (often background/system noise).
 - Time range matters: use “Last 60 minutes” / “Last 4 hours” when testing to avoid mixing old lab data.
