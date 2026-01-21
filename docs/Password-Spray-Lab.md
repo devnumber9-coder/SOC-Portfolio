@@ -1,4 +1,4 @@
-# Password Spray Detection Lab (SOC-Home-Lab)
+# Password Spray Detection Lab (Splunk Home Lab)
 
 ## Objective
 Detect and analyze password spray activity against Windows endpoints using Windows Security Event Logs and Splunk SIEM.
