@@ -8,15 +8,15 @@ All labs are built and documented in controlled lab environments with a focus on
 Completed Labs
 --------------
 
-* • [Windows Authentication Brute Force Detection](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Windows-Authentication-Brute-Force-Detection.md)  
+*  [Windows Authentication Brute Force Detection](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Windows-Authentication-Brute-Force-Detection.md)  
   - Detection of high-volume failed logon activity using Windows Event ID 4625  
   - Threshold-based alerting and correlation in Splunk  
 
-* • [Password Spray Detection](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Password-Spray-Lab.md)  
+*  [Password Spray Detection](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Password-Spray-Lab.md)  
   - Identification of low-and-slow authentication abuse across multiple user accounts  
   - Time-binned analysis and alerting using Splunk SPL  
 
-* • [Active Directory Workstation Hardening & GPO Baseline](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Active-Directory-Workstation-GPO-Baseline.md)  
+*  [Active Directory Workstation Hardening & GPO Baseline](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Active-Directory-Workstation-GPO-Baseline.md)  
   - Domain controller and workstation deployment  
   - OU design, user and computer separation  
   - Group Policy enforcement for workstation security  
@@ -26,10 +26,10 @@ Completed Labs
 In Progress / Future Labs
 -------------------------
 
-* • Network Activity Log Analysis  
-* • Kerberos Authentication Monitoring  
-* • Active Directory Authentication Abuse Detection  
-* • Lateral Movement Detection (Windows Event Logs)  
+*  Network Activity Log Analysis  
+*  Kerberos Authentication Monitoring  
+*  Active Directory Authentication Abuse Detection  
+*  Lateral Movement Detection (Windows Event Logs)  
 
 Skills Summary
 --------------
