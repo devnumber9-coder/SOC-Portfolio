@@ -41,6 +41,6 @@ How to Use This Repo
 
 Each lab is self-contained:
 
-* • `docs/` contains the written lab documentation  
-* • `screenshots/` contains corresponding images  
-* • Individual .md files explain objectives, steps, results, and lessons  
+*  `docs/` contains the written lab documentation  
+*  `screenshots/` contains corresponding images  
+*  Individual .md files explain objectives, steps, results, and lessons  
