@@ -1,4 +1,6 @@
 # Skills Demonstrated
+> Skills demonstrated through hands-on Active Directory, Windows security, and SOC detection labs.
+
 
 ## Identity & Access Management (Active Directory)
 - Active Directory user, group, and computer object management
