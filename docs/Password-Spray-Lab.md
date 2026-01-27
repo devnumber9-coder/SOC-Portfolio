@@ -131,7 +131,7 @@ source="WinEventLog:Security" EventCode=4625
 
 These events were used as the data sources for detection and analysis in this lab.
 
-## SOC Analysis
+## Analysis
 
 Indicators supporting password spray classification:
 1. Low attempt count per user
@@ -140,7 +140,7 @@ Indicators supporting password spray classification:
 4. Short, clustered time window
 5. NTLM authentication failures
 
-A SOC analyst would escalate this activity for:
+An analyst would escalate this activity for:
 - Credential abuse investigation
 - Source host review
 - Potential containment actions
@@ -185,7 +185,7 @@ See `screenshots/rdp-password-spray/` for visual evidence:
 
 ## Conclusion
 
-This lab demonstrated how to collect Windows authentication logs, simulate password spray activity, and detect patterns using Splunk SIEM. The focus was on detection, correlation, and alerting from a SOC analyst perspective. While alerting thresholds may vary in production environments, the detection logic provides meaningful visibility into authentication anomalies that could indicate password spraying or related suspicious behavior.
+This lab demonstrated how to collect Windows authentication logs, simulate password spray activity, and detect patterns using Splunk SIEM. The focus was on detection, correlation, and alerting from a analyst perspective. While alerting thresholds may vary in production environments, the detection logic provides meaningful visibility into authentication anomalies that could indicate password spraying or related suspicious behavior.
 
 ---
 
