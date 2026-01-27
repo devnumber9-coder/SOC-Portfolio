@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab focuses on understanding, validating, and detecting Kerberos authentication activity within an Active Directory environment from a SOC analyst perspective. Rather than exploitation, the emphasis is on log interpretation, event correlation, and detection logic using native Windows Security logs.
+This lab focuses on understanding, validating, and detecting Kerberos authentication activity within an Active Directory environment from a analyst perspective. Rather than exploitation, the emphasis is on log interpretation, event correlation, and detection logic using native Windows Security logs.
 
 The lab walks through normal Kerberos behavior and contrasts it with suspicious patterns that may indicate credential abuse, lateral movement, or password spraying.
 
@@ -42,14 +42,14 @@ The lab walks through normal Kerberos behavior and contrasts it with suspicious 
 - Issued by the KDC (Domain Controller)
 - Service name: krbtgt
 
-**SOC Insight**: 4768 confirms initial authentication success, not resource access.
+** 4768 confirms initial authentication success, not resource access.
 
 ### Step 2 — Service Ticket Request (4769)
 
 - Generated when a user requests access to a service (e.g., DC, file share)
 - Occurs after TGT issuance
 
-**SOC Insight**: 4769 reveals what service is being accessed, from where, and by whom.
+** 4769 reveals what service is being accessed, from where, and by whom.
 
 ### Step 3 — Logon Context Events
 
@@ -61,8 +61,7 @@ Observed alongside Kerberos activity:
 
 These events provide session context, not Kerberos mechanics.
 
-## Detection Patterns (SOC-Focused)
-
+## Detection Patterns 
 ### 1. Normal Kerberos Behavior (Baseline)
 
 **Pattern**: 4768 → 4769 → 4624 → 4634
@@ -95,7 +94,7 @@ These events provide session context, not Kerberos mechanics.
 
 **Explanation**: Password spraying may succeed silently. Kerberos failures are not always noisy.
 
-**SOC Lesson**: Kerberos logs alone may not detect sprays — context is required.
+**Lesson**: Kerberos logs alone may not detect sprays — context is required.
 
 ## Key Takeaways
 
@@ -119,7 +118,7 @@ These events provide session context, not Kerberos mechanics.
 - ✓ Repeated 4769 events
 - ✓ Correlation with logon and privilege events
 
-## SOC Analysis
+## Analysis
 
 Indicators for Kerberos anomaly detection:
 
@@ -129,7 +128,7 @@ Indicators for Kerberos anomaly detection:
 4. **4769 failures with specific error codes** (permission or trust issues)
 5. **Pattern correlation with 4625 failures** (brute force + Kerberos)
 
-A SOC analyst would escalate this activity for:
+An analyst would escalate this activity for:
 
 - Account compromise investigation
 - Lateral movement detection
@@ -168,7 +167,7 @@ A SOC analyst would escalate this activity for:
 
 ## Conclusion
 
-This lab demonstrated how Kerberos authentication appears in enterprise logs and how a SOC analyst can distinguish normal identity behavior from potential abuse. The focus on detection logic and reasoning mirrors real-world SOC workflows and prepares analysts to investigate identity-based alerts effectively.
+This lab demonstrated how Kerberos authentication appears in enterprise logs and how an analyst can distinguish normal identity behavior from potential abuse. The focus on detection logic and reasoning mirrors real-world workflows and prepares analysts to investigate identity-based alerts effectively.
 
 **Lab Completion Date**: January 2026
 **Total Time**: 3 hours
