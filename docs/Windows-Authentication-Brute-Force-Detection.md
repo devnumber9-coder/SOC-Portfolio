@@ -144,7 +144,7 @@ source="WinEventLog:Security" EventCode=4625
 
 These events were used as the data sources for detection and analysis in this lab.
 
-## SOC Analysis
+## Analysis
 
 Indicators supporting brute force classification:
 1. High attempt count per user (10+ per minute)
@@ -153,7 +153,7 @@ Indicators supporting brute force classification:
 4. Rapid, sequential time pattern
 5. NTLM authentication failures
 
-A SOC analyst would escalate this activity for:
+Analyst would escalate this activity for:
 - Account compromise investigation
 - Source host identification and containment
 - Password reset and credential rotation
@@ -199,7 +199,7 @@ See `screenshots/rdp-brute-force/` for visual evidence:
 
 ## Conclusion
 
-This lab demonstrated how to collect Windows authentication logs, simulate brute force activity, and detect patterns using Splunk SIEM. The focus was on detection, correlation, and alerting from a SOC analyst perspective. The brute force detection logic provides meaningful visibility into authentication anomalies that could indicate credential abuse or account compromise attempts.
+This lab demonstrated how to collect Windows authentication logs, simulate brute force activity, and detect patterns using Splunk SIEM. The focus was on detection, correlation, and alerting from a analyst perspective. The brute force detection logic provides meaningful visibility into authentication anomalies that could indicate credential abuse or account compromise attempts.
 
 ---
 
