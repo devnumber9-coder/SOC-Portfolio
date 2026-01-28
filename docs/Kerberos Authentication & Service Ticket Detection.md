@@ -42,14 +42,10 @@ The lab walks through normal Kerberos behavior and contrasts it with suspicious 
 - Issued by the KDC (Domain Controller)
 - Service name: krbtgt
 
-** 4768 confirms initial authentication success, not resource access.
-
 ### Step 2 — Service Ticket Request (4769)
 
 - Generated when a user requests access to a service (e.g., DC, file share)
 - Occurs after TGT issuance
-
-** 4769 reveals what service is being accessed, from where, and by whom.
 
 ### Step 3 — Logon Context Events
 
@@ -58,8 +54,6 @@ Observed alongside Kerberos activity:
 - 4624 — session created
 - 4672 — elevated privileges (admins, services)
 - 4634 — session terminated
-
-These events provide session context, not Kerberos mechanics.
 
 ## Detection Patterns 
 ### 1. Normal Kerberos Behavior (Baseline)
@@ -92,9 +86,8 @@ These events provide session context, not Kerberos mechanics.
 - 4769 present
 - No repeated 4768 failures
 
-**Explanation**: Password spraying may succeed silently. Kerberos failures are not always noisy.
-
-**Lesson**: Kerberos logs alone may not detect sprays — context is required.
+Password spraying may succeed silently. Kerberos failures are not always noisy.
+Kerberos logs alone may not detect sprays — context is required.
 
 ## Key Takeaways
 
@@ -164,10 +157,6 @@ An analyst would escalate this activity for:
 - Microsoft Event ID 4769 Documentation
 - MITRE ATT&CK T1550 (Use Alternate Authentication Material)
 - MITRE ATT&CK T1558 (Steal or Forge Kerberos Tickets)
-
-## Conclusion
-
-This lab demonstrated how Kerberos authentication appears in enterprise logs and how an analyst can distinguish normal identity behavior from potential abuse. The focus on detection logic and reasoning mirrors real-world workflows and prepares analysts to investigate identity-based alerts effectively.
 
 **Lab Completion Date**: January 2026
 **Total Time**: 3 hours
