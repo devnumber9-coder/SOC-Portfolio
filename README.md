@@ -21,15 +21,23 @@ Completed Labs
   - OU design, user and computer separation  
   - Group Policy enforcement for workstation security  
   - Local administrator privilege control using Restricted Groups  
-  - Validation of authentication, authorization, and policy application  
+  - Validation of authentication, authorization, and policy application
+  
+* [Kerberos Abuse Detection & SOC Correlation](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Kerberos-Abuse-Detection-Correlation-Lab)  
+  - Analysis of suspicious Kerberos service ticket activity (Event ID 4769)  
+  - Correlation of Kerberos authentication (4768), service tickets (4769), successful logons (4624), and privileged sessions (4672)  
+  - Demonstrated how Kerberos abuse may occur without failed logon events (4625)  
+  - SOC-style investigation using event sequencing, frequency analysis, and session context  
+  - MITRE ATT&CK mapping: T1558 (Steal or Forge Kerberos Tickets)
+
 
 In Progress / Future Labs
 -------------------------
 
-*  Network Activity Log Analysis  
-*  Kerberos Authentication Monitoring  
-*  Active Directory Authentication Abuse Detection  
-*  Lateral Movement Detection (Windows Event Logs)  
+* Lateral Movement Detection (Windows Event Logs)  
+* Privileged Account Monitoring (Active Directory)  
+* Identity-Based Threat Correlation in Splunk  
+
 
 Skills Summary
 --------------
@@ -38,9 +46,9 @@ See [SKILLS.md](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/SKIL
 
 How to Use This Repo
 --------------------
+This portfolio emphasizes identity-based threat detection, including Windows authentication monitoring and Kerberos abuse detection from a SOC analyst perspective.
 
 Each lab is self-contained:
-
 *  `docs/` contains the written lab documentation  
 *  `screenshots/` contains corresponding images  
 *  Individual .md files explain objectives, steps, results, and lessons  
