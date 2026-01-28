@@ -24,11 +24,11 @@ Completed Labs
   - Validation of authentication, authorization, and policy application
   
 * [Kerberos Abuse Detection & SOC Correlation](https://github.com/devnumber9-coder/SOC-Portfolio/blob/main/docs/Kerberos-Abuse-Detection-Correlation-Lab)  
-  - Analysis of suspicious Kerberos service ticket activity (Event ID 4769)  
-  - Correlation of Kerberos authentication (4768), service tickets (4769), successful logons (4624), and privileged sessions (4672)  
-  - Demonstrated how Kerberos abuse may occur without failed logon events (4625)  
-  - SOC-style investigation using event sequencing, frequency analysis, and session context  
-  - MITRE ATT&CK mapping: T1558 (Steal or Forge Kerberos Tickets)
+- Analysis of suspicious Kerberos service ticket activity (Event ID 4769)  
+- Correlation of Kerberos authentication (4768), service tickets (4769), successful logons (4624), and privileged sessions (4672)  
+- Demonstrated how Kerberos abuse may occur without failed logon events (4625)  
+- SOC-style investigation using event sequencing, frequency analysis, and session context  
+- MITRE ATT&CK mapping: T1558 (Steal or Forge Kerberos Tickets)
 
 
 In Progress / Future Labs
