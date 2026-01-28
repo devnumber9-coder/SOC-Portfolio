@@ -1,0 +1,298 @@
+# Kerberos Abuse Detection & SOC Correlation Lab
+
+## Objective
+
+Detect and analyze suspicious Kerberos authentication activity in an Active Directory environment using Windows Security Event Logs and a SOC-style correlation methodology.  
+The focus is on defensive analysis rather than exploitation, emphasizing context, correlation, and SOC-ready documentation.
+
+## Overview
+
+This lab focuses on detecting suspicious Kerberos authentication behavior in an Active Directory domain by analyzing Windows Security Event Logs and correlating multiple event types.  
+Rather than exploiting Kerberos, the emphasis is on understanding what normal Kerberos flows look like and how subtle abuse can hide inside successful authentication activity.
+
+Key goals of this lab:
+
+- Understand baseline Kerberos ticket behavior (TGT and service tickets).
+- Identify suspicious patterns in Event ID 4769 (Kerberos Service Ticket requested).
+- Correlate Kerberos activity with logon, privilege, and session lifecycle events.
+- Demonstrate why traditional failed-logon monitoring alone is insufficient for Kerberos-based abuse.
+
+This lab mirrors real-world SOC investigations where Kerberos activity appears quiet, lacks obvious failures, and requires contextual analysis to surface risk.
+
+---
+
+## Lab Environment
+
+| Component        | Details                                     |
+|-----------------|---------------------------------------------|
+| Domain Controller | Windows Server (DC01.lab.local)           |
+| Client          | Windows 10/11 domain-joined workstation     |
+| Domain          | LAB.LOCAL                                  |
+| Authentication  | Kerberos                                   |
+| Logs Analyzed   | Windows Security Event Log                  |
+| Virtualization  | VirtualBox                                  |
+
+The environment uses standard Active Directory Kerberos authentication with logging enabled on the Domain Controller to capture relevant authentication and ticket activity.
+
+---
+
+## Skills Demonstrated
+
+- Kerberos ticket and authentication analysis in Windows Event Viewer.
+- Identification of suspicious Event ID 4769 patterns.
+- Correlation of multiple Security Event IDs for investigative context.
+- SOC-style narrative reporting and analyst-ready documentation.
+- Mapping findings to MITRE ATT&CK identity-focused techniques.
+
+---
+
+## Relevant Windows Event IDs
+
+| Event ID | Description                                   | SOC Relevance               |
+|----------|-----------------------------------------------|-----------------------------|
+| **4768** | Kerberos Authentication Ticket (TGT) requested | Initial authentication      |
+| **4769** | Kerberos Service Ticket requested             | Primary detection signal    |
+| **4624** | Successful logon                              | Session validation          |
+| **4625** | Failed logon                                  | Credential attack context   |
+| **4672** | Special privileges assigned                   | Privileged access           |
+| **4634** | Logoff                                        | Session termination         |
+
+These events form the core dataset for this lab and are used to build a correlated view of Kerberos activity and session behavior.
+
+---
+
+## Lab Setup
+
+### Scope and Baseline
+
+To ensure accurate analysis, the Security log was scoped to only authentication- and Kerberos-related events.
+
+Filtered Event IDs:
+
+- 4768 – Kerberos TGT requested  
+- 4769 – Kerberos Service Ticket requested  
+- 4624 – Successful logon  
+- 4625 – Failed logon  
+- 4672 – Special privileges assigned  
+- 4634 – Logoff
+
+**Screenshot:**  
+`10_event_log_filter_scope.png`  
+*Event Viewer filtered to Kerberos and authentication-relevant events.*
+
+This scoping prevents unrelated noise from impacting the investigation and keeps the focus on authentication behavior.
+
+---
+
+## Step 1 – Validate Absence of Failed Logons (4625)
+
+The Security log was filtered specifically for Event ID 4625 (Failed logon).
+
+**Observation:**
+
+- No failed logon events were recorded during the Kerberos analysis window.
+
+**Screenshot:**  
+`01_no_failed_logons_4625.png`
+
+### SOC Insight
+
+Kerberos-based authentication abuse does not always produce failed logons.  
+Valid credentials, ticket reuse, or service ticket abuse can generate only successful Kerberos events, leaving traditional failed-logon rules blind to the activity.
+
+> Reliance on Event ID 4625 alone would fail to detect this activity.
+
+This insight highlights a common detection gap in environments that focus solely on failed authentication metrics.
+
+---
+
+## Step 2 – Successful Logon & Privilege Context
+
+### Successful Logon (4624)
+
+A successful logon event (4624) was observed corresponding to the Kerberos activity window.
+
+**Screenshot:**  
+`03_successful_logon_4624.png`
+
+This confirms that Kerberos service ticket requests were associated with a valid, interactive or network session rather than random background or system activity.
+
+### Special Privilege Assignment (4672)
+
+A Special Logon (4672) event was observed, indicating elevated privileges assigned during authentication.
+
+**Screenshot:**  
+`02_special_logon_4672_privileges.png`
+
+### SOC Insight
+
+The presence of 4672 increases investigative priority because privileged sessions amplify the impact of Kerberos abuse.  
+A burst of Kerberos service tickets associated with privileged accounts represents a higher risk than the same pattern on low-privilege accounts.
+
+---
+
+## Step 3 – Session Lifecycle Correlation
+
+Logon and logoff events were reviewed to validate the session lifecycle and confirm normal termination behavior.
+
+**Screenshot:**  
+`04_session_lifecycle_correlation.png`
+
+This correlation confirmed:
+
+- Session creation (4624).  
+- Privilege assignment (4672).  
+- Normal session termination (4634).
+
+Correlating these events provides confidence that the observed Kerberos activity occurred within a well-defined session rather than orphaned or misattributed log entries.
+
+---
+
+## Step 4 – Kerberos Service Ticket Activity (4769)
+
+### Repeated Service Ticket Requests
+
+Multiple Kerberos Service Ticket (4769) events were observed within a short time window for the same account.
+
+**Screenshot:**  
+`05_kerberos_service_ticket_burst_4769.png`
+
+This behavior may indicate:
+
+- Automated or scripted access attempts.  
+- Service enumeration against multiple SPNs.  
+- Credential or ticket misuse involving repeated access to services.
+
+### Event Details Analysis
+
+Detailed 4769 events were reviewed to identify:
+
+- Account name (requesting principal).  
+- Service name (target service/SPN).  
+- Client address (source host).
+
+**Screenshots:**
+
+- `06_kerberos_service_ticket_details_dc01.png`  
+- `08_kerberos_service_ticket_workstation_service.png`
+
+### SOC Insight
+
+Service names reveal intent by indicating which resources or services are being targeted (e.g., file servers, domain controllers, application services).  
+Client addresses provide source attribution, and the frequency and consistency of 4769 events are often more meaningful than any single event in isolation.
+
+---
+
+## Step 5 – Kerberos Authentication Ticket (4768)
+
+A Kerberos TGT request (4768) was observed preceding the service ticket activity.
+
+**Screenshot:**  
+`09_kerberos_tgt_request_4768.png`
+
+This establishes:
+
+- Valid credential-based authentication to the Key Distribution Center (KDC).  
+- A baseline Kerberos flow (TGT first, then service tickets) prior to the 4769 burst.
+
+In combination, 4768 and 4769 form the core of Kerberos ticket activity and help distinguish one-off service access from structured or repeated access patterns.
+
+---
+
+## Step 6 – Event Correlation Summary
+
+**Screenshot:**  
+`07_kerberos_and_logon_event_correlation.png`
+
+### Correlated Event Sequence
+
+A representative correlated sequence for the lab:
+
+- 4768 → 4769 → 4624 → 4672 → 4634
+
+### SOC Interpretation
+
+From this sequence, the analyst can infer:
+
+- Authentication succeeded (4768 and 4624 present).  
+- Multiple service tickets were issued (repeated 4769 events).  
+- Privileged access was involved (4672 present).  
+- No failed logons occurred (absence of 4625 in the same window).
+
+This pattern warrants deeper investigation despite the absence of traditional alert triggers such as high failed-logon volume.
+
+---
+
+## Key Findings
+
+- Kerberos abuse can occur without any accompanying failed logon events.  
+- Event ID 4769 is a critical detection signal for Kerberos service ticket abuse and enumeration.  
+- Privilege context from 4672 significantly increases the severity of suspicious Kerberos activity.  
+- Effective detection requires correlation across multiple event types, not single-event alerting.  
+- Relying solely on failed-logon metrics or simple threshold-based rules is insufficient for Kerberos-focused monitoring.
+
+These findings reinforce the need for identity-aware, context-driven SOC detection strategies.
+
+---
+
+## MITRE ATT&CK Mapping
+
+| Technique | Description                         |
+|----------|-------------------------------------|
+| **T1558** | Steal or Forge Kerberos Tickets    |
+| **T1110** | Brute Force (contextual correlation) |
+
+The lab aligns primarily with Kerberos ticket-focused techniques but also supports brute-force or credential misuse analysis when correlated with broader authentication data.
+
+---
+
+## SOC Analyst Verdict
+
+**Assessment:**  
+Suspicious Kerberos service ticket activity observed without corresponding authentication failures, occurring within a privileged session context.
+
+**Risk Level:**  
+Medium – elevated due to privileged account involvement and repeated 4769 activity.
+
+**Recommended Next Steps:**
+
+- Monitor for recurring 4769 bursts for the same accounts, services, or client addresses.  
+- Correlate with lateral movement indicators (e.g., remote service use, admin share access, logon type 3/10 patterns).  
+- Review service access patterns for abnormal or newly observed SPNs.  
+- Implement Kerberos-specific alerting logic focusing on 4769 frequency, privileged accounts, and unusual service targets.
+
+---
+
+## Screenshots
+
+See `screenshots/kerberos-abuse-lab/` for visual evidence:
+
+- Event log filter scoping for Kerberos and authentication-related events.  
+- 4625 filter showing absence of failed logons during the analysis window.  
+- 4624 and 4672 events confirming successful and privileged logons.  
+- Session lifecycle correlation (4624, 4672, 4634).  
+- 4769 burst pattern and detailed service ticket event views.  
+- 4768 TGT request preceding service ticket activity.
+
+These screenshots support the narrative and provide visual confirmation of each investigative step.
+
+---
+
+## Lessons Learned
+
+- Kerberos activity is inherently noisy and requires context-aware filtering to avoid false conclusions.  
+- Failed logons are not required for abuse; successful-only patterns can still indicate misuse.  
+- Context and correlation across multiple event types drive detection confidence in identity-focused investigations.  
+- Proper log scoping and baseline validation are critical before drawing conclusions from Security Event Logs.  
+- High-quality documentation and clear analytic reasoning are essential for SOC workflows and incident handoffs.
+
+---
+
+## Conclusion
+
+This lab demonstrates a SOC-focused approach to Kerberos abuse detection by correlating Kerberos authentication (4768), service ticket behavior (4769), and logon/privilege context (4624, 4672, 4634).  
+By focusing on context instead of only failed-logon counts, suspicious Kerberos activity can be identified even when traditional authentication failure-based alerts never trigger.
+
+**Status:** ✅ Completed  
+**Lab Completion Date:** January 2026  
+**Total Time:** 4 hours
